@@ -50,7 +50,7 @@ const App = ()=>{
                 <PrivateRoute exact path='/sell-stock' component={SellStock}/>
               </Switch>
             </section>
-            <Footer/>
+  
           </div>
         </Router>
       </Provider>
