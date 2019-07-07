@@ -9,7 +9,7 @@ const path=require('path');
 const users=require('./routes/api/users');
 const profile=require('./routes/api/profile');
 const stockprice=require('./routes/api/stockprice');
-
+const connectDB = require('./config/db');
 const port=process.env.PORT || 8080;
 
 //Body Parser Middleware
@@ -17,16 +17,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
-//Mongo DB Configuration
-const db=require('./config/keys').mongoURI;
+
 //Conect to MongodB through mongoose
 
-mongoose
-.connect(db,{ useNewUrlParser: true })
-.then(()=>console.log('MongoDB Connected'))
-.catch(err=>console.log(err));
-//Take away error for using useFindandModify
-mongoose.set('useFindAndModify', false);
+connectDB();
 
 
 
