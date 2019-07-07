@@ -30,6 +30,7 @@ mongoose.set('useFindAndModify', false);
 
 
 
+
 //Passport Middleware
 app.use(passport.initialize());
 //Passport Config
@@ -44,13 +45,13 @@ app.use('/api/profile',profile);
 app.use('/api/stockprice',stockprice);
 
 //Serve the Static Assets when in production
-if(process.env.NODE_ENV==='production'){
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
     app.use(express.static('client/build'));
-
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
-}
-
+  }
 
 app.listen(port,()=>console.log('Running on Port '+port));
